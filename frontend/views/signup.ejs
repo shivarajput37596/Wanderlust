@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In • Wanderlust</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Manrope', Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #fff5f6 0%, #f8f8f8 35%, #f3f3f3 100%);
+        color: #1f1f1f;
+      }
+      a { text-decoration: none; color: inherit; }
+
+      .topbar {
+        background: rgba(255,255,255,0.96);
+        border-bottom: 1px solid #ebebeb;
+        padding: 18px 36px;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        backdrop-filter: blur(10px);
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 2rem;
+        font-weight: 900;
+        color: #ff385c;
+        letter-spacing: -0.08em;
+        text-transform: none;
+      }
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ff8d9d, #ff5a5f 28%, #ff385c 52%, #d62954 100%);
+        color: white;
+        font-size: 12px;
+        font-weight: 900;
+        box-shadow: 0 12px 22px rgba(255, 56, 92, 0.22);
+        transform: rotate(-8deg);
+        border: 2px solid rgba(255,255,255,0.8);
+      }
+
+      .page-wrap {
+        display: grid;
+        place-items: center;
+        min-height: calc(100vh - 72px);
+        padding: 40px 20px;
+      }
+      .auth-panel {
+        width: min(100%, 1040px);
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        background: white;
+        border: 1px solid #f0f0f0;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.06);
+      }
+      .visual {
+        padding: 42px 36px;
+        background: linear-gradient(135deg, #fff0f2 0%, #ffe1e7 100%);
+      }
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255,56,92,0.08);
+        color: #ff385c;
+        font-size: 0.73rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .visual h1 {
+        margin: 18px 0 14px;
+        font-size: clamp(2.3rem, 4vw, 3.6rem);
+        line-height: 1.02;
+        letter-spacing: -0.06em;
+      }
+      .visual p {
+        margin: 0 0 24px;
+        color: #535353;
+        line-height: 1.7;
+        font-size: 1rem;
+      }
+      .check-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 14px;
+      }
+      .check-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+      }
+      .check-list li::before {
+        content: '✓';
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255,56,92,0.12);
+        color: #ff385c;
+        font-size: 0.8rem;
+      }
+
+      .form-panel {
+        padding: 40px 34px;
+      }
+      .small-label {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: #ff385c;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .form-panel h2 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        letter-spacing: -0.06em;
+      }
+      .subtitle {
+        margin: 0 0 26px;
+        color: #6f6f6f;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-weight: 700;
+        color: #2d2d2d;
+      }
+      input {
+        width: 100%;
+        padding: 15px 16px;
+        border-radius: 14px;
+        border: 1px solid #dcdcdc;
+        background: #fff;
+        font-size: 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      input:focus {
+        outline: none;
+        border-color: #ff385c;
+        box-shadow: 0 0 0 4px rgba(255,56,92,0.1);
+      }
+      button {
+        border: none;
+        background: linear-gradient(135deg, #ff385c 0%, #d62954 100%);
+        color: white;
+        border-radius: 14px;
+        padding: 16px 18px;
+        font-size: 1rem;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 18px 28px rgba(255,56,92,0.18);
+      }
+      .message {
+        margin-bottom: 18px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: #fff4d7;
+        border: 1px solid #f1dfad;
+        color: #7a5400;
+        font-weight: 600;
+      }
+
+      @media (max-width: 860px) {
+        .auth-panel {
+          grid-template-columns: 1fr;
+        }
+        .visual, .form-panel { padding: 28px 22px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">W</span>Wanderlust</div>
+    </header>
+
+    <main class="page-wrap">
+      <div class="auth-panel">
+        <section class="visual">
+          <div class="eyebrow">Travel smarter</div>
+          <h1>Find a place that feels like home.</h1>
+          <p>From cloud-kissed cabins to beachside villas, Wanderlust helps you discover spaces made for real escapes.</p>
+          <ul class="check-list">
+            <li>Verified stays</li>
+            <li>Fast booking flow</li>
+            <li>Flexible pricing</li>
+          </ul>
+        </section>
+
+        <section class="form-panel">
+          <div class="small-label">Welcome</div>
+          <h2>Sign in</h2>
+          <p class="subtitle">Continue to unlock your next escape</p>
+
+          <% if (message) { %>
+            <div class="message"><%= message %></div>
+          <% } %>
+
+          <form action="/signin" method="POST">
+            <label>
+              Full name
+              <input type="text" name="user[name]" placeholder="John Doe" required />
+            </label>
+
+            <label>
+              Email
+              <input type="email" name="user[email]" placeholder="you@example.com" required />
+            </label>
+
+            <label>
+              Password
+              <input type="password" name="user[password]" placeholder="Enter your password" required />
+            </label>
+
+            <button type="submit">Continue</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

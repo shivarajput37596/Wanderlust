@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout • Airbnb Clone</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Manrope', Arial, Helvetica, sans-serif;
+        background: #f7f7f7;
+        color: #1f1f1f;
+      }
+      .topbar {
+        background: #fff;
+        border-bottom: 1px solid #ebebeb;
+        padding: 18px 40px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: #ff385c;
+        letter-spacing: -0.05em;
+      }
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ff8d9d, #ff5a5f 28%, #ff385c 52%, #d62954 100%);
+        color: white;
+        font-size: 12px;
+        font-weight: 900;
+        box-shadow: 0 12px 22px rgba(255, 56, 92, 0.22);
+        transform: rotate(-8deg);
+        border: 2px solid rgba(255,255,255,0.8);
+      }
+      .container {
+        max-width: 760px;
+        margin: 56px auto;
+        background: white;
+        border-radius: 24px;
+        border: 1px solid #efefef;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        padding: 30px;
+      }
+      h1 { margin-top: 0; }
+      .summary {
+        background: #fafafa;
+        border: 1px solid #efefef;
+        border-radius: 16px;
+        padding: 20px;
+      }
+      .price {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">W</span>Wanderlust</div>
+    </header>
+
+    <main class="container">
+      <h1>Confirm your stay</h1>
+      <div class="summary">
+        <h2><%= listing.title %></h2>
+        <p><strong>Trip type:</strong> <%= mode %></p>
+        <p><strong>Payment method:</strong> <%= paymentMethod %></p>
+        <div class="price">₹<%= amount %></div>
+      </div>
+    </main>
+  </body>
+</html>
